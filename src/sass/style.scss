@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.todo-content {
+  flex: 1;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.weather-content {
+  flex: 1;
+  text-decoration: none;
+}
+
+header,
+footer {
+  display: flex;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #007bff;
+}

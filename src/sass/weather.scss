@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$fontFamily: Verdana, Geneva, Tahoma, sans-serif;
+$bodyColor: #eeeeee;
+
+@mixin linearBackground($deg, $firstRgba, $secondRgba) {
+  background: linear-gradient($deg, $firstRgba, $secondRgba);
+}
+
+.weather-content {
+  @include linearBackground(
+    180deg,
+    rgba(28, 144, 127, 1) 0%,
+    rgba(35, 87, 157, 1) 100%
+  );
+  font-family: $fontFamily;
+  color: $bodyColor;
+}
+
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+.weather-content {
+  @include flexCenter(column);
+  height: 100vh;
+
+  .location,
+  .temperature {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30vh;
+    width: 50%;
+  }
+
+  .location-city,
+  .temperature-description {
+    font-size: 40px;
+  }
+
+  .temperature {
+    flex-direction: column;
+  }
+
+  .temperature-section {
+    display: flex;
+    align-items: center;
+  }
+
+  .temperature-section span {
+    margin: 10px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .temperature-section h2 {
+    font-size: 60px;
+  }
+}

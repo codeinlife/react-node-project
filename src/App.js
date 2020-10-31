@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./sass/style.css";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import Content from "./components/layout/Content";
+import useFetch from "./components/useFetch";
+import Weather from "./components/Weather";
 
-function App() {
+export default function App() {
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState();
+
+  const loading = useFetch(setTodos, "http://localhost:3001/json");
+
+  const markComplete = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      })
+    );
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="wrapper">
+        <Header todoTotal={todos.length} />
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <React.Fragment>
+              <Content
+                todos={todos}
+                setTodos={setTodos}
+                loading={loading}
+                markComplete={markComplete}
+              />
+            </React.Fragment>
+          )}
+        />
+        <Route path="/weather" component={Weather} />
+        <Footer byWho={"By toycrane"} />
+      </div>
+    </Router>
   );
 }
-
-export default App;
