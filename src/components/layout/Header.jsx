@@ -3,13 +3,22 @@ import { Link } from "react-router-dom";
 
 export default function Header({ todoTotal }) {
   return (
-    <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <span className="navbar-brand">Total Todo List: {todoTotal}</span>
-        <div>
-          <Link to="/">Home</Link> | <Link to="/weather">Weather</Link>
-        </div>
-      </nav>
+    <header style={headerStyle}>
+      <div>Total Todo List: {todoTotal}</div>
+      <div>
+        <Link to="/">Home</Link> | <Link to="/weather">Weather</Link>
+      </div>
     </header>
   );
 }
+
+const headerStyle = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  backgroundColor: "#f8f9fa",
+  height: "70px",
+  fontSize: "1.2em",
+  padding: "20px",
+};

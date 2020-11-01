@@ -1,14 +1,42 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
-export default function TodoForm() {
+export default function TodoForm({ todos, setTodos, inputText, setInputText }) {
+  const changeHandler = (e) => {
+    setInputText(e.target.value);
+  };
+
+  const clickHandler = (e) => {
+    e.preventDefault();
+    if (inputText !== "") {
+      setTodos([
+        { id: uuidv4(), title: inputText, completed: false },
+        ...todos,
+      ]);
+      setInputText("");
+    }
+  };
+
   return (
-    <div className="row">
-      <div className="col">
-        <form className="form-inline">
-          <input className="form-control mb-2 mr-sm-2"></input>
-          <button className="btn btn-primary mb-2">Save</button>
-        </form>
+    <form>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          value={inputText}
+          className="form-control"
+          placeholder="Add todo..."
+          onChange={changeHandler}
+        />
+        <div className="input-group-append">
+          <button
+            className="btn btn-primary"
+            type="button"
+            onClick={clickHandler}
+          >
+            Save
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
   );
 }

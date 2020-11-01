@@ -2,11 +2,28 @@ import React from "react";
 import TodoForm from "../TodoForm";
 import TodoList from "../TodoList";
 
-function Content({ todos, loading, markComplete }) {
+function Content({
+  todos,
+  setTodos,
+  loading,
+  markComplete,
+  inputText,
+  setInputText,
+}) {
   return (
     <div className="todo-content">
-      <TodoForm />
-      <TodoList todos={todos} loading={loading} markComplete={markComplete} />
+      <TodoForm
+        todos={todos}
+        setTodos={setTodos}
+        inputText={inputText}
+        setInputText={setInputText}
+      />
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        loading={loading}
+        markComplete={markComplete}
+      />
     </div>
   );
 }

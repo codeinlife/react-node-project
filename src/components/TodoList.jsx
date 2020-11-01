@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-function TodoList({ todos, loading, markComplete }) {
+function TodoList({ todos, setTodos, loading, markComplete }) {
   let todoList = <div>fetching data...</div>;
   if (!loading) {
     todoList = todos.map((todo) => (
@@ -9,7 +9,12 @@ function TodoList({ todos, loading, markComplete }) {
         className={`list-group-item ${todo.completed ? "completed" : ""}`}
         key={todo.id}
       >
-        <TodoItem todo={todo} markComplete={markComplete} />
+        <TodoItem
+          todo={todo}
+          todos={todos}
+          markComplete={markComplete}
+          setTodos={setTodos}
+        />
       </li>
     ));
   }

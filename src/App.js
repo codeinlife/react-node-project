@@ -9,8 +9,7 @@ import Weather from "./components/Weather";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState();
-
+  const [inputText, setInputText] = useState();
   const loading = useFetch(setTodos, "http://localhost:3001/json");
 
   const markComplete = (id) => {
@@ -41,6 +40,8 @@ export default function App() {
                 setTodos={setTodos}
                 loading={loading}
                 markComplete={markComplete}
+                inputText={inputText}
+                setInputText={setInputText}
               />
             </React.Fragment>
           )}

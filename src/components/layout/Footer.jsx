@@ -13,8 +13,10 @@ const footerStyle = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
+  alignItems: "center",
   backgroundColor: "#424242",
+  height: "60px",
   color: "#ffffff",
   fontSize: "1em",
-  padding: "10px 10px",
+  padding: "20px",
 };
