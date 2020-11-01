@@ -23,13 +23,13 @@ class Weather extends Component {
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=imperial`;
-        console.log(apiUrl);
+        // console.log(apiUrl);
         fetch(apiUrl)
           .then((response) => {
             return response.json();
           })
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             this.setState({
               isLoading: false,
               cityName: data.name,
