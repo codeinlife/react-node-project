@@ -2,7 +2,7 @@ import React from "react";
 import TodoForm from "../TodoForm";
 import TodoList from "../TodoList";
 
-function Content({
+export default function Content({
   todos,
   setTodos,
   loading,
@@ -27,5 +27,3 @@ function Content({
     </div>
   );
 }
-
-export default Content;

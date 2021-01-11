@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-function TodoList({ todos, setTodos, loading, markComplete }) {
+export default function TodoList({ todos, setTodos, loading, markComplete }) {
   let todoList = <div>fetching data...</div>;
   if (!loading) {
     todoList = todos.map((todo) => (
@@ -27,5 +27,3 @@ function TodoList({ todos, setTodos, loading, markComplete }) {
     </div>
   );
 }
-
-export default TodoList;
